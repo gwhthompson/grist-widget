@@ -153,7 +153,8 @@ class CalendarHandler {
       },
       month: {
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
-        visibleWeeksCount: 3
+        visibleWeeksCount: 3,
+        narrowWeekend: true
       },
       usageStatistics: false,
       theme: this._calendarTheme(),

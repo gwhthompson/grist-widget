@@ -161,7 +161,8 @@ class CalendarHandler {
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
         visibleWeeksCount: 0,
         startDayOfWeek: 1,
-        narrowWeekend: true
+        narrowWeekend: true,
+        isAlways6Weeks: false
       },
       usageStatistics: false,
       theme: this._calendarTheme(),

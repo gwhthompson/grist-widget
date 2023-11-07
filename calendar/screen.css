@@ -15,10 +15,6 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
 }
 
-.toastui-calendar-timegrid {
-  min-height: 600px !important;
-}
-
 #calendar-options {
   color: var(--grist-theme-text);
   display: flex;
@@ -46,10 +42,7 @@ body {
   display: inline-block;
   vertical-align: middle;
   mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
   mask-position: center;
-  mask-position: center;
-  mask-size: contain;
   mask-size: contain;
   width: 13px;
   height: 13px;
@@ -58,11 +51,9 @@ body {
 
 .icon-arrow-left {
   mask-image: var(--icon-ArrowLeft);
-  mask-image: var(--icon-ArrowLeft);
 }
 
 .icon-arrow-right {
-  mask-image: var(--icon-ArrowRight);
   mask-image: var(--icon-ArrowRight);
 }
 
@@ -98,6 +89,7 @@ body {
 
 .toastui-calendar-timegrid {
   height: 100%;
+  min-height: 600px !important;
 }
 
 /*** BEGIN popup-related styling ***/
@@ -334,9 +326,6 @@ body {
 
 .tui-timepicker .tui-timepicker-select {
   appearance: auto;
-  appearance: auto;
-  appearance: auto;
-  appearance: auto;
 }
 
 .tui-timepicker-select {
@@ -398,13 +387,11 @@ body {
 .tui-calendar .tui-calendar-btn-prev-year::after {
   margin-left: -8px;
   mask-image: var(--icon-ArrowLeft);
-  mask-image: var(--icon-ArrowLeft);
 }
 
 .tui-calendar .tui-calendar-btn-next-month::after,
 .tui-calendar .tui-calendar-btn-next-year::after {
   margin-right: -8px;
-  mask-image: var(--icon-ArrowRight);
   mask-image: var(--icon-ArrowRight);
 }
 

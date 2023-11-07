@@ -149,12 +149,12 @@ class CalendarHandler {
     return {
       week: {
         taskView: false,
-        dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
-        workweek: true
+        workweek: true,
+        dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')]
       },
       month: {
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
-        visibleWeeksCount: 3,
+        // visibleWeeksCount: 3,
         narrowWeekend: true
       },
       usageStatistics: false,

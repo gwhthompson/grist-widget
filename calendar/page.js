@@ -1,3 +1,5 @@
+/* global grist, tui, i18next, i18nextHttpBackend */
+
 // to keep all calendar related logic;
 let calendarHandler
 

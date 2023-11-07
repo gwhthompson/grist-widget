@@ -485,6 +485,14 @@ function getGristOptions () {
       type: 'Choice,ChoiceList',
       description: t('event category and style'),
       allowMultiple: false
+    },
+    {
+      name: 'tripe',
+      title: t('Tripe'),
+      optional: true,
+      type: 'Choice,ChoiceList',
+      description: t('event category and style'),
+      allowMultiple: false
     }
   ]
 }

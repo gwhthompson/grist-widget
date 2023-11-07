@@ -483,7 +483,7 @@ function getGristOptions () {
       title: 'Category',
       optional: true,
       type: 'Choice,ChoiceList',
-      description: t('category'),
+      description: 'category',
       allowMultiple: false
     }
   ]

@@ -1,16 +1,22 @@
 :root {
-  --icon-ArrowLeft: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTSA4Ljc4NDkzNDYsMTQuNjcwNzUzIDIuNzg0NjI5Niw4LjYyMTMyMjUgYyAtMC4zNjgyMDg0LC0wLjM3MTIzIC0wLjM2ODIwODQsLTAuOTczMSAwLC0xLjM0NDMyIGwgNi4wMDAzMDUsLTYuMDQ5NDI0IGMgMC4zNjgyMSwtMC4zNzEyMjI3NiAwLjk2NTE5LC0wLjM3MTIyMjc2IDEuMzMzNDAwNCwwIDAuMzY4MjEsMC4zNzEyMjMgMC4zNjgyMSwwLjk3MzA5NCAwLDEuMzQ0MzE0IGwgLTQuMzkwNzUwNCw0LjQyNjY5IGggNy43ODA4OTA0IHYgMS45MDExNSBIIDUuNzI3NTg0NiBsIDQuMzkwNzUwNCw0LjQyNjcyMDUgYyAwLjM2ODIxLDAuMzcxMiAwLjM2ODIxLDAuOTczMSAwLDEuMzQ0MyAtMC4zNjgyMTA0LDAuMzcxMiAtMC45NjUxOTA0LDAuMzcxMiAtMS4zMzM0MDA0LDAgeiIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
-  --icon-ArrowRight: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTSA3LjIzMjAxMzcsMTQuNjcwNzUzIDEzLjIzMjMxOSw4LjYyMTMyMjUgYyAwLjM2ODIwOCwtMC4zNzEyMyAwLjM2ODIwOCwtMC45NzMxIDAsLTEuMzQ0MzIgTCA3LjIzMjAxMzcsMS4yMjc1Nzg1IGMgLTAuMzY4MjEsLTAuMzcxMjIyNzYgLTAuOTY1MTksLTAuMzcxMjIyNzYgLTEuMzMzNDAwNCwwIC0wLjM2ODIxLDAuMzcxMjIzIC0wLjM2ODIxLDAuOTczMDk0IDAsMS4zNDQzMTQgbCA0LjM5MDc1MDcsNC40MjY2OSBIIDIuNTA4NDczMyB2IDEuOTAxMTUgSCAxMC4yODkzNjQgTCA1Ljg5ODYxMzMsMTMuMzI2NDUzIGMgLTAuMzY4MjEsMC4zNzEyIC0wLjM2ODIxLDAuOTczMSAwLDEuMzQ0MyAwLjM2ODIxMDQsMC4zNzEyIDAuOTY1MTkwNCwwLjM3MTIgMS4zMzM0MDA0LDAgeiIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
-  --icon-Tick: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExLjYxODMwNjksNC42NzcwMjg0NyBDMTEuNzk2Njc4OSw0LjQ2NjIyNTE3IDEyLjExMjE2NzgsNC40Mzk5MzQ0MyAxMi4zMjI5NzExLDQuNjE4MzA2NDUgQzEyLjUzMzc3NDQsNC43OTY2Nzg0OCAxMi41NjAwNjUyLDUuMTEyMTY3NDEgMTIuMzgxNjkzMSw1LjMyMjk3MDcxIEw2LjUzMDY4ODI3LDEyLjIzNzc5NDYgTDMuNjQ2NDQ2NjEsOS4zNTM1NTI5OCBDMy40NTExODQ0Niw5LjE1ODI5MDg0IDMuNDUxMTg0NDYsOC44NDE3MDgzNSAzLjY0NjQ0NjYxLDguNjQ2NDQ2MiBDMy44NDE3MDg3Niw4LjQ1MTE4NDA2IDQuMTU4MjkxMjQsOC40NTExODQwNiA0LjM1MzU1MzM5LDguNjQ2NDQ2MiBMNi40NjkzMTE3MywxMC43NjIyMDQ1IEwxMS42MTgzMDY5LDQuNjc3MDI4NDcgWiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+');
+  --icon-ArrowLeft: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTSA4Ljc4NDkzNDYsMTQuNjcwNzUzIDIuNzg0NjI5Niw4LjYyMTMyMjUgYyAtMC4zNjgyMDg0LC0wLjM3MTIzIC0wLjM2ODIwODQsLTAuOTczMSAwLC0xLjM0NDMyIGwgNi4wMDAzMDUsLTYuMDQ5NDI0IGMgMC4zNjgyMSwtMC4zNzEyMjI3NiAwLjk2NTE5LC0wLjM3MTIyMjc2IDEuMzMzNDAwNCwwIDAuMzY4MjEsMC4zNzEyMjMgMC4zNjgyMSwwLjk3MzA5NCAwLDEuMzQ0MzE0IGwgLTQuMzkwNzUwNCw0LjQyNjY5IGggNy43ODA4OTA0IHYgMS45MDExNSBIIDUuNzI3NTg0NiBsIDQuMzkwNzUwNCw0LjQyNjcyMDUgYyAwLjM2ODIxLDAuMzcxMiAwLjM2ODIxLDAuOTczMSAwLDEuMzQ0MyAtMC4zNjgyMTA0LDAuMzcxMiAtMC45NjUxOTA0LDAuMzcxMiAtMS4zMzM0MDA0LDAgeiIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
+  --icon-ArrowRight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTSA3LjIzMjAxMzcsMTQuNjcwNzUzIDEzLjIzMjMxOSw4LjYyMTMyMjUgYyAwLjM2ODIwOCwtMC4zNzEyMyAwLjM2ODIwOCwtMC45NzMxIDAsLTEuMzQ0MzIgTCA3LjIzMjAxMzcsMS4yMjc1Nzg1IGMgLTAuMzY4MjEsLTAuMzcxMjIyNzYgLTAuOTY1MTksLTAuMzcxMjIyNzYgLTEuMzMzNDAwNCwwIC0wLjM2ODIxLDAuMzcxMjIzIC0wLjM2ODIxLDAuOTczMDk0IDAsMS4zNDQzMTQgbCA0LjM5MDc1MDcsNC40MjY2OSBIIDIuNTA4NDczMyB2IDEuOTAxMTUgSCAxMC4yODkzNjQgTCA1Ljg5ODYxMzMsMTMuMzI2NDUzIGMgLTAuMzY4MjEsMC4zNzEyIC0wLjM2ODIxLDAuOTczMSAwLDEuMzQ0MyAwLjM2ODIxMDQsMC4zNzEyIDAuOTY1MTkwNCwwLjM3MTIgMS4zMzM0MDA0LDAgeiIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
+  --icon-Tick: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExLjYxODMwNjksNC42NzcwMjg0NyBDMTEuNzk2Njc4OSw0LjQ2NjIyNTE3IDEyLjExMjE2NzgsNC40Mzk5MzQ0MyAxMi4zMjI5NzExLDQuNjE4MzA2NDUgQzEyLjUzMzc3NDQsNC43OTY2Nzg0OCAxMi41NjAwNjUyLDUuMTEyMTY3NDEgMTIuMzgxNjkzMSw1LjMyMjk3MDcxIEw2LjUzMDY4ODI3LDEyLjIzNzc5NDYgTDMuNjQ2NDQ2NjEsOS4zNTM1NTI5OCBDMy40NTExODQ0Niw5LjE1ODI5MDg0IDMuNDUxMTg0NDYsOC44NDE3MDgzNSAzLjY0NjQ0NjYxLDguNjQ2NDQ2MiBDMy44NDE3MDg3Niw4LjQ1MTE4NDA2IDQuMTU4MjkxMjQsOC40NTExODQwNiA0LjM1MzU1MzM5LDguNjQ2NDQ2MiBMNi40NjkzMTE3MywxMC43NjIyMDQ1IEwxMS42MTgzMDY5LDQuNjc3MDI4NDcgWiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+");
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   background-color: var(--grist-theme-page-panels-main-panel-bg) !important;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.toastui-calendar-timegrid {
+  min-height: 600px !important;
 }
 
 #calendar-options {
@@ -22,7 +28,7 @@ body {
   align-items: center;
 }
 
-/*overriding bootstrap button colors*/
+/* overriding bootstrap button colors */
 #calendar-options .btn {
   color: var(--grist-theme-text);
   background-color: var(--grist-theme-button-group-bg);
@@ -40,11 +46,11 @@ body {
   display: inline-block;
   vertical-align: middle;
   mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-position: center;
+  mask-position: center;
   mask-size: contain;
-  -webkit-mask-size: contain;
+  mask-size: contain;
   width: 13px;
   height: 13px;
   background-color: var(--icon-color, var(--grist-theme-text, black));
@@ -52,12 +58,12 @@ body {
 
 .icon-arrow-left {
   mask-image: var(--icon-ArrowLeft);
-  -webkit-mask-image: var(--icon-ArrowLeft);
+  mask-image: var(--icon-ArrowLeft);
 }
 
 .icon-arrow-right {
   mask-image: var(--icon-ArrowRight);
-  -webkit-mask-image: var(--icon-ArrowRight);
+  mask-image: var(--icon-ArrowRight);
 }
 
 #calendar-options .btn:hover {
@@ -75,7 +81,8 @@ body {
   border-bottom-right-radius: 4px;
 }
 
-#calendar-navigation-buttons, #calendar-perspective-buttons {
+#calendar-navigation-buttons,
+#calendar-perspective-buttons {
   display: flex;
 }
 
@@ -120,7 +127,7 @@ body {
   min-width: 200px;
   border-radius: 4px;
   border: none;
-  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgba(38, 38, 51, 0.6));
+  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgb(38 38 51 / 60%));
   background-color: var(--grist-theme-popup-bg);
   color: var(--grist-theme-text);
 }
@@ -144,42 +151,63 @@ body {
   border: 1px solid var(--grist-theme-input-border);
   background-color: var(--grist-theme-input-bg);
 }
+
 .toastui-calendar-popup-section-item input {
   background-color: var(--grist-theme-input-bg);
 }
+
 .toastui-calendar-popup-section-allday {
   border: none;
 }
+
 .toastui-calendar-popup-section-title {
   width: calc(100% - 16px);
 }
+
 .toastui-calendar-form-container input.toastui-calendar-content {
   width: calc(100% - 16px);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-right .toastui-calendar-popup-arrow-border {
+
+.toastui-calendar-popup-arrow.toastui-calendar-right
+  .toastui-calendar-popup-arrow-border {
   border-left-color: var(--grist-theme-modal-border-dark);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-right .toastui-calendar-popup-arrow-fill {
+
+.toastui-calendar-popup-arrow.toastui-calendar-right
+  .toastui-calendar-popup-arrow-fill {
   border-left-color: var(--grist-theme-popup-bg);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-left .toastui-calendar-popup-arrow-border {
+
+.toastui-calendar-popup-arrow.toastui-calendar-left
+  .toastui-calendar-popup-arrow-border {
   border-right-color: var(--grist-theme-modal-border-dark);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-left .toastui-calendar-popup-arrow-fill {
+
+.toastui-calendar-popup-arrow.toastui-calendar-left
+  .toastui-calendar-popup-arrow-fill {
   border-right-color: var(--grist-theme-popup-bg);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-top .toastui-calendar-popup-arrow-border {
+
+.toastui-calendar-popup-arrow.toastui-calendar-top
+  .toastui-calendar-popup-arrow-border {
   border-bottom-color: var(--grist-theme-modal-border-dark);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-top .toastui-calendar-popup-arrow-fill {
+
+.toastui-calendar-popup-arrow.toastui-calendar-top
+  .toastui-calendar-popup-arrow-fill {
   border-bottom-color: var(--grist-theme-popup-bg);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-bottom .toastui-calendar-popup-arrow-border {
+
+.toastui-calendar-popup-arrow.toastui-calendar-bottom
+  .toastui-calendar-popup-arrow-border {
   border-top-color: var(--grist-theme-modal-border-dark);
 }
-.toastui-calendar-popup-arrow.toastui-calendar-bottom .toastui-calendar-popup-arrow-fill {
+
+.toastui-calendar-popup-arrow.toastui-calendar-bottom
+  .toastui-calendar-popup-arrow-fill {
   border-top-color: var(--grist-theme-popup-bg);
 }
+
 .toastui-calendar-popup-button.toastui-calendar-popup-confirm {
   /* match grist primary button style */
   background-color: var(--grist-theme-control-primary-bg);
@@ -194,9 +222,11 @@ body {
   height: unset;
   width: unset;
 }
+
 .toastui-calendar-popup-button.toastui-calendar-popup-confirm:hover {
   background-color: var(--grist-theme-control-primary-hover-bg);
 }
+
 .toastui-calendar-popup-button.toastui-calendar-popup-close {
   background-color: transparent;
   padding: 4px;
@@ -210,12 +240,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .toastui-calendar-popup-button.toastui-calendar-popup-close:hover {
   background-color: var(--grist-theme-hover);
 }
+
 .toastui-calendar-popup-button.toastui-calendar-popup-close::before {
   content: "✕";
 }
+
 .toastui-calendar-icon.toastui-calendar-ic-close {
   display: none;
 }
@@ -228,8 +261,10 @@ body {
   width: 16px;
   height: 16px;
 }
-.toastui-calendar-popup-section-allday .toastui-calendar-ic-checkbox-normal::after {
-  content: '';
+
+.toastui-calendar-popup-section-allday
+  .toastui-calendar-ic-checkbox-normal::after {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -238,26 +273,29 @@ body {
   border: 1px solid var(--grist-theme-checkbox-border);
   border-radius: 3px;
 }
+
 .toastui-calendar-icon.toastui-calendar-ic-checkbox-checked {
   background-color: var(--grist-theme-control-primary-bg);
   border-radius: 3px;
 }
+
 .toastui-calendar-icon.toastui-calendar-ic-checkbox-checked::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 16px;
   width: 16px;
-  -webkit-mask-image: var(--icon-Tick);
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
+  mask-image: var(--icon-Tick);
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
   background-color: var(--grist-theme-control-primary-fg);
 }
+
 .toastui-calendar-edit-button .toastui-calendar-icon,
 .toastui-calendar-delete-button .toastui-calendar-icon {
-  display: none;    /* no easy way to adjust color for dark mode */
+  display: none; /* no easy way to adjust color for dark mode */
 }
 
 .toastui-calendar-detail-container .toastui-calendar-section-button {
@@ -275,7 +313,7 @@ body {
 .tui-datepicker {
   color: var(--grist-theme-text);
   border: none;
-  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgba(38, 38, 51, 0.6));
+  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgb(38 38 51 / 60%));
 }
 
 .tui-datepicker-footer .tui-timepicker {
@@ -296,14 +334,14 @@ body {
 
 .tui-timepicker .tui-timepicker-select {
   appearance: auto;
-  -webkit-appearance: auto;
-  -moz-appearance: auto;
-  -o-appearance: auto;
+  appearance: auto;
+  appearance: auto;
+  appearance: auto;
 }
 
 .tui-timepicker-select {
   border: 1px solid var(--grist-theme-input-border);
-  padding: 0px;
+  padding: 0;
   color: var(--grist-theme-select-button-fg);
   background: var(--grist-theme-select-button-bg);
 }
@@ -338,14 +376,14 @@ body {
   background-color: var(--grist-theme-date-picker-range-start-end-bg);
 }
 
-.tui-calendar .tui-calendar-btn-prev-month:after,
-.tui-calendar .tui-calendar-btn-next-month:after,
-.tui-calendar.tui-calendar-month .tui-calendar-btn-prev-year:after,
-.tui-calendar.tui-calendar-month .tui-calendar-btn-next-year:after,
-.tui-calendar.tui-calendar-year .tui-calendar-btn-prev-year:after,
-.tui-calendar.tui-calendar-year .tui-calendar-btn-next-year:after {
+.tui-calendar .tui-calendar-btn-prev-month::after,
+.tui-calendar .tui-calendar-btn-next-month::after,
+.tui-calendar.tui-calendar-month .tui-calendar-btn-prev-year::after,
+.tui-calendar.tui-calendar-month .tui-calendar-btn-next-year::after,
+.tui-calendar.tui-calendar-year .tui-calendar-btn-prev-year::after,
+.tui-calendar.tui-calendar-year .tui-calendar-btn-next-year::after {
   background: unset;
-  margin: 0px;
+  margin: 0;
   top: 18px;
   width: 16px;
   height: 16px;
@@ -356,18 +394,18 @@ body {
   width: 40px;
 }
 
-.tui-calendar .tui-calendar-btn-prev-month:after,
-.tui-calendar .tui-calendar-btn-prev-year:after {
+.tui-calendar .tui-calendar-btn-prev-month::after,
+.tui-calendar .tui-calendar-btn-prev-year::after {
   margin-left: -8px;
   mask-image: var(--icon-ArrowLeft);
-  -webkit-mask-image: var(--icon-ArrowLeft);
+  mask-image: var(--icon-ArrowLeft);
 }
 
-.tui-calendar .tui-calendar-btn-next-month:after,
-.tui-calendar .tui-calendar-btn-next-year:after {
+.tui-calendar .tui-calendar-btn-next-month::after,
+.tui-calendar .tui-calendar-btn-next-year::after {
   margin-right: -8px;
   mask-image: var(--icon-ArrowRight);
-  -webkit-mask-image: var(--icon-ArrowRight);
+  mask-image: var(--icon-ArrowRight);
 }
 
 .tui-calendar .tui-calendar-title-today {
@@ -393,7 +431,9 @@ input:checked + label {
   color: var(--grist-theme-control-primary-fg);
 }
 
-.toastui-calendar-day-view .toastui-calendar-panel:not(.toastui-calendar-time), .toastui-calendar-week-view .toastui-calendar-panel:not(.toastui-calendar-time) {
+.toastui-calendar-day-view .toastui-calendar-panel:not(.toastui-calendar-time),
+.toastui-calendar-week-view
+  .toastui-calendar-panel:not(.toastui-calendar-time) {
   overflow-y: hidden;
 }
 
@@ -415,7 +455,7 @@ input:checked + label {
   border-color: var(--grist-theme-button-group-selected-border);
 }
 
-/*Overriding some Toast UI styles that cannot be configured via theme*/
+/* Overriding some Toast UI styles that cannot be configured via theme */
 .toastui-calendar-panel {
   scrollbar-gutter: stable;
 }
@@ -428,11 +468,11 @@ input:checked + label {
   color: var(--grist-theme-text);
 }
 
-.toastui-calendar-template-monthDayName{
+.toastui-calendar-template-monthDayName {
   color: var(--grist-theme-text);
 }
 
-.toastui-calendar-weekday-event-dot + .toastui-calendar-weekday-event-title  {
+.toastui-calendar-weekday-event-dot + .toastui-calendar-weekday-event-title {
   color: var(--grist-theme-text) !important;
 }
 
@@ -445,16 +485,17 @@ input:checked + label {
   background-color: var(--grist-theme-add-new-circle-small-bg) !important;
 }
 
-.toastui-calendar-day-view-day-names, .toastui-calendar-week-view-day-names {
+.toastui-calendar-day-view-day-names,
+.toastui-calendar-week-view-day-names {
   border-bottom: 1px solid var(--grist-theme-table-body-border);
 }
 
-.toastui-calendar-daygrid-cell+.toastui-calendar-daygrid-cell {
+.toastui-calendar-daygrid-cell + .toastui-calendar-daygrid-cell {
   border-left: 1px solid var(--grist-theme-table-body-border);
 }
 
-.toastui-calendar-day-names.toastui-calendar-month{
-  padding: 0px;
+.toastui-calendar-day-names.toastui-calendar-month {
+  padding: 0;
 }
 
 .toastui-calendar-week-view .toastui-calendar-holiday-sun,
@@ -481,7 +522,7 @@ input:checked + label {
 .toastui-calendar-see-more {
   border: unset !important;
   background-color: var(--grist-theme-popup-bg) !important;
-  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgba(38, 38, 51, 0.6)) !important;
+  box-shadow: 0 2px 20px 0 var(--grist-theme-menu-shadow, rgb(38 38 51 / 60%)) !important;
 }
 
 .toastui-calendar-more-title-date,
@@ -489,7 +530,7 @@ input:checked + label {
   color: var(--grist-theme-text);
 }
 
-@media (max-width: 575.98px) {
+@media (width <= 575.98px) {
   /* CSS hacks to make days of week more responsive in week view. */
   .toastui-calendar-week-view .toastui-calendar-day-name__date,
   .toastui-calendar-week-view .toastui-calendar-day-name__name {
@@ -497,7 +538,8 @@ input:checked + label {
     line-height: 11px;
   }
 
-  .toastui-calendar-week-view .toastui-calendar-day-name-item.toastui-calendar-week {
+  .toastui-calendar-week-view
+    .toastui-calendar-day-name-item.toastui-calendar-week {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -505,9 +547,8 @@ input:checked + label {
 
   .toastui-calendar-week-view .toastui-calendar-day-name-item > span {
     /* Collapse the &nbsp characters by shrinking the font and line-height to 0px. */
-    font-size: 0px;
+    font-size: 0;
     line-height: 0px;
-
     display: flex;
     flex-direction: column-reverse;
     row-gap: 4px;
@@ -521,6 +562,6 @@ input:checked + label {
 }
 
 /* Toast UI doesn't allow styling dots, we are reverting it here */
-.toastui-calendar-weekday-event-dot+.toastui-calendar-weekday-event-title {
+.toastui-calendar-weekday-event-dot + .toastui-calendar-weekday-event-title {
   color: inherit;
 }

@@ -488,7 +488,7 @@ function getGristOptions () {
     },
     {
       name: 'tripe',
-      title: t('Tripe'),
+      title: 'Tripe',
       optional: true,
       type: 'Choice,ChoiceList',
       description: t('event category and style'),

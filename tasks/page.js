@@ -148,13 +148,14 @@ class CalendarHandler {
   _getCalendarOptions () {
     return {
       week: {
-        taskView: true,
+        taskView: false,
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
+        eventView: 'allday',
         workweek: true
       },
       month: {
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
-        visibleWeeksCount: 1,
+        visibleWeeksCount: 3,
         narrowWeekend: true
       },
       usageStatistics: false,
@@ -477,14 +478,6 @@ function getGristOptions () {
       type: 'Choice,ChoiceList',
       description: t('event category and style'),
       allowMultiple: false
-    },
-    {
-      name: 'cat',
-      title: 'Category',
-      optional: true,
-      type: 'Choice,ChoiceList',
-      description: 'category',
-      allowMultiple: false
     }
   ]
 }
@@ -652,8 +645,7 @@ async function upsertEvent (tuiEvent) {
     startDate: tuiEvent.start ? makeGristDateTime(tuiEvent.start, startType) : undefined,
     endDate: tuiEvent.end ? makeGristDateTime(tuiEvent.end, endType) : undefined,
     isAllDay: tuiEvent.isAllday !== undefined ? (tuiEvent.isAllday ? 1 : 0) : undefined,
-    title: tuiEvent.title !== undefined ? (tuiEvent.title || 'New Event') : undefined,
-    cat: tuiEvent.category !== undefined ? (tuiEvent.category || 'task') : undefined
+    title: tuiEvent.title !== undefined ? (tuiEvent.title || 'New Event') : undefined
   }
   upsertGristRecord(gristEvent)
 }
@@ -700,7 +692,7 @@ function getAdjustedDate (date, colType) {
 
 // helper function to build a calendar event object from grist flat record
 function buildCalendarEventObject (record, colTypes, colOptions) {
-  let { startDate: start, endDate: end, isAllDay: isAllday, cat: category } = record
+  let { startDate: start, endDate: end, isAllDay: isAllday } = record
   let [startType, endType] = colTypes
   const [,, type] = colOptions
   endType = endType || startType
@@ -727,7 +719,6 @@ function buildCalendarEventObject (record, colTypes, colOptions) {
   })
   const fontWeight = type?.choiceOptions?.[selected]?.fontBold ? '800' : 'normal'
   const fontStyle = type?.choiceOptions?.[selected]?.fontItalic ? 'italic' : 'normal'
-  category = record.category ?? 'time'
   let textDecoration = type?.choiceOptions?.[selected]?.fontUnderline ? 'underline' : 'none'
   if (type?.choiceOptions?.[selected]?.fontStrikethrough) {
     textDecoration = textDecoration === 'underline' ? 'line-through underline' : 'line-through'
@@ -739,7 +730,7 @@ function buildCalendarEventObject (record, colTypes, colOptions) {
     start,
     end,
     isAllday,
-    category,
+    category: 'time',
     state: 'Free',
     color: this._textColor,
     backgroundColor: this._mainColor,

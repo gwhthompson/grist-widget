@@ -159,7 +159,7 @@ class CalendarHandler {
       },
       month: {
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')],
-        visibleWeeksCount: 6,
+        visibleWeeksCount: 0,
         startDayOfWeek: 1,
         narrowWeekend: true
       },

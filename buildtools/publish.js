@@ -12,8 +12,8 @@ const rootDir = path.join(__dirname, '..')
 const folders = fs.readdirSync(rootDir)
 
 const manifestFile = process.argv[2]
-const replacementUrl = 'https://gristwidget.whipsnap.uk'
-// const replacementUrl = process.argv[3]
+const replacementUrl = process.argv[3]
+
 if (!manifestFile) {
   throw new Error('please call with the file to build')
 }
@@ -71,7 +71,7 @@ fs.writeFileSync(manifestFile, JSON.stringify(widgets, null, 2))
 
 function replaceUrl (replacementUrl, configUrl) {
   return configUrl.replace(
-    'https://gristlabs.github.io/grist-widget',
+    'https://gristwidget.whipsnap.uk',
     replacementUrl
   )
 }

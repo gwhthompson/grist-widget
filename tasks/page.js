@@ -148,6 +148,8 @@ class CalendarHandler {
   _getCalendarOptions () {
     return {
       week: {
+        eventView: ['allday'],
+        workweek: true,
         taskView: false,
         dayNames: [t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')]
       },

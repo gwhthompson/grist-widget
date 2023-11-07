@@ -12,7 +12,7 @@ const rootDir = path.join(__dirname, '..')
 const folders = fs.readdirSync(rootDir)
 
 const manifestFile = process.argv[2]
-const replacementUrl = 'https://gristwidget.whipsnap.uk/grist-widget'
+const replacementUrl = 'https://gristwidget.whipsnap.uk'
 // const replacementUrl = process.argv[3]
 if (!manifestFile) {
   throw new Error('please call with the file to build')

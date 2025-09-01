@@ -1,155 +1,88 @@
-const {Subject} = rxjs;
-const {debounceTime} = rxjs.operators;
+import { Editor } from '@tiptap/core'
+import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
+import { BubbleMenu } from '@tiptap/extension-bubble-menu'
 
-const defaultTheme = "snow";
+let editor, column, id, lastContent, lastSave
 
-const toolbarOptions = [
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
+// Create the menu element but don't add it to DOM yet
+const bubbleMenuElement = document.createElement('div')
+bubbleMenuElement.className = 'bubble-menu'
+bubbleMenuElement.innerHTML = `
+    <button data-action="toggleBold" title="Bold">B</button>
+    <button data-action="toggleItalic" title="Italic">I</button>
+    <button data-action="toggleUnderline" title="Underline">U</button>
+    <button data-action="toggleBulletList" title="Bullet List">•</button>
+    <button data-action="toggleOrderedList" title="Numbered List">1.</button>
+`
 
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-  [{ 'size': ['small', false, 'large', 'huge'] }],  // font sizes
+const getMarkName = action => ({
+  toggleBold: 'bold',
+  toggleItalic: 'italic',
+  toggleUnderline: 'underline',
+  toggleBulletList: 'bulletList',
+  toggleOrderedList: 'orderedList'
+})[action]
 
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
-
-
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': [] }],
-  [{ 'align': [] }],
-
-  ['link'],
-
-  ['clean'],                                        // remove formatting button
-];
-
-let quill = {};
-
-const textChanged = new Subject();
-let column;
-let id;
-let lastContent;
-let lastSave;
-let tableId;
-
-// Create a Quill editor with specified theme
-function makeQuill(theme){
-  var quillDiv = document.createElement('div');
-  quillDiv.id = 'quill';
-  document.getElementById('editor').innerHTML = '';
-  document.getElementById('editor').appendChild(quillDiv);
-
-  const quill = new Quill('#quill', {
-    theme: theme,
-    modules: {
-      toolbar: toolbarOptions,
-      imageResize: {
-        displaySize: true
+editor = new Editor({
+  element: document.querySelector('#editor'),
+  extensions: [
+    StarterKit,
+    Underline,
+    BubbleMenu.configure({
+      element: bubbleMenuElement,
+      shouldShow: ({ editor, view, state, oldState, from, to }) => {
+        // Only show if there's a text selection (not just cursor)
+        return from !== to
       }
-    }
-  });
-
-  quill.on('text-change', () => textChanged.next(null));
-  if(lastContent){
-    quill.setContents(safeParse(lastContent));
+    })
+  ],
+  content: '<p></p>',
+  onUpdate: () => saveContent(),
+  onSelectionUpdate: ({ editor }) => {
+    // Update button states when selection changes
+    bubbleMenuElement.querySelectorAll('button').forEach(button => {
+      button.classList.toggle('is-active', editor.isActive(getMarkName(button.dataset.action)))
+    })
   }
-
-  // Set up config save callback
-  document.getElementById("configuration").addEventListener("submit", async function(event){
-    event.preventDefault();
-    await saveOptions();
-  });
-
-  return quill;
-}
-
-function safeParse(value) {
-  try {
-    return JSON.parse(value);
-  } catch (err) {
-    if (typeof value === 'string') {
-      return {ops: [{insert: `${value}\n`}]};
-    }
-    return null;
-  }
-}
-
-// Helper to show or hide panels.
-function showPanel(name) {
-  document.getElementById("configuration").style.display = 'none';
-  document.getElementById("editor").style.display = 'none';
-  document.getElementById(name).style.display = '';
-}
-
-// Define handler for the Save button.
-async function saveOptions() {
-  const theme = document.getElementById("quillTheme").value;
-  await grist.widgetApi.setOption('quillTheme', theme);
-  showPanel('editor');
-}
-
-// Subscribe to grist data
-grist.ready({requiredAccess: 'full', columns: [{name: 'Content', type: 'Text'}],
-  // Register configuration handler to show configuration panel.
-  onEditOptions() {
-    showPanel('configuration');
-  },
-});
-grist.onRecord(function (record, mappings) {
-  quill.enable();
-  // If this is a new record, or mapping is diffrent.
-  if (id !== record.id || mappings?.Content !== column) {
-    id = record.id;
-    column = mappings?.Content;
-    const mapped = grist.mapColumnNames(record);
-    if (!mapped) {
-      // Log but don't bother user - maybe we are just testing.
-      console.error('Please map columns');
-    } else if (lastContent !== mapped.Content) {
-      // We will remember last thing sent, to not remove progress.
-      const content = safeParse(mapped.Content);
-      lastContent = JSON.stringify(content);
-      quill.setContents(content);
-    }
-  }
-});
-
-grist.onNewRecord(function () {
-  id = null;
-  lastContent = null;
-  quill.setContents(null);
-  quill.disable();
 })
 
-// Register onOptions handler.
-grist.onOptions((customOptions, _) => {
-  customOptions = customOptions || {};
-  theme = customOptions.quillTheme || defaultTheme;
-  document.getElementById("quillTheme").value = theme;
-  quill = makeQuill(theme);
-  showPanel("editor");
-});
-
-// Debounce the save event, to not save more often than once every 500 ms.
-const saveEvent = textChanged.pipe(debounceTime(500));
-const table = grist.getTable();
-saveEvent.subscribe(() => {
-  // If we are in a middle of saving, skip this.
-  if (lastSave) { return; }
-  // If we are mapped.
-  if (column && id) {
-    const content = quill.getContents();
-    // Store content as json.
-    const newContent = JSON.stringify(content);
-    // Don't send what we just received.
-    if (newContent === lastContent) {
-      return;
-    }
-    lastContent = newContent;
-    lastSave = table.update({id, fields: {
-      [column]: lastContent,
-    }}).finally(() => lastSave = null);
+bubbleMenuElement.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') {
+    const action = e.target.dataset.action
+    editor.chain().focus()[action]().run()
   }
-});
+})
+
+grist.ready({ requiredAccess: 'full', columns: [{ name: 'Content', type: 'Text' }] })
+
+grist.onRecord((record, mappings) => {
+  editor.setEditable(true)
+  if (id !== record.id || mappings?.Content !== column) {
+    id = record.id
+    column = mappings?.Content
+    const mapped = grist.mapColumnNames(record)
+    if (mapped && lastContent !== mapped.Content) {
+      const content = mapped.Content || '<p></p>'
+      lastContent = content
+      editor.commands.setContent(content)
+    }
+  }
+})
+
+grist.onNewRecord(() => {
+  id = null
+  lastContent = null
+  editor.commands.setContent('<p></p>')
+  editor.setEditable(false)
+})
+
+const table = grist.getTable()
+
+function saveContent () {
+  if (lastSave || !column || !id) return
+  const content = editor.getHTML()
+  if (content === lastContent) return
+  lastContent = content
+  lastSave = table.update({ id, fields: { [column]: lastContent } }).finally(() => lastSave = null)
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@gristlabs/widget-chat",
+  "description": "Chat",
+  "homePage": "https://github.com/gristlabs/grist-widget",
+  "version": "0.0.1",
+  "grist": {
+    "name": "Notepad",
+    "url": "https://gristwidget.whipsnap.uk/chat",
+    "widgetId": "@gristlabs/chat",
+    "published": true,
+    "accessLevel": "full",
+    "renderAfterReady": true
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="grist-light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Editor</title>
+    <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+  </head>
+  <body>
+    <div class="p-4">
+      <form id="contentForm" class="space-y-4">
+        <div class="form-control">
+          <label class="label" for="contentInput">
+            <span class="label-text">Content</span>
+          </label>
+          <textarea
+            id="contentInput"
+            class="textarea textarea-bordered h-32"
+            placeholder="Enter your content here..."
+          ></textarea>
+        </div>
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary">Update Content</button>
+        </div>
+      </form>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

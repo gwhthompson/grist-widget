@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "grist-light";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+
+  /* Base colors - mapping to Grist's white/black */
+  --color-base-100: #ffffff; /* Pure white like Grist */
+  --color-base-200: #f7f7f7; /* Grist's light gray panels */
+  --color-base-300: #e8e8e8; /* Grist's border gray */
+  --color-base-content: #262633; /* Grist's main text */
+
+  /* Primary - Grist's signature green */
+  --color-primary: #16b378; /* Exact Grist green */
+  --color-primary-content: #ffffff; /* White text on green */
+
+  /* Secondary - keep neutral */
+  --color-secondary: #929299; /* Grist's secondary text */
+  --color-secondary-content: #ffffff;
+
+  /* Accent - Grist's darker green */
+  --color-accent: #009058; /* Grist's primaryMuted */
+  --color-accent-content: #ffffff;
+
+  /* Neutral - Grist's dark color */
+  --color-neutral: #262633; /* Grist's emphasis color */
+  --color-neutral-content: #ffffff;
+
+  /* Keep DaisyUI's default state colors but adjust to Grist where available */
+  --color-info: #3b82f6; /* Grist's info blue */
+  --color-info-content: #ffffff;
+  --color-success: #16b378; /* Use Grist green for success */
+  --color-success-content: #ffffff;
+  --color-warning: #dd962c; /* Grist's warning orange */
+  --color-warning-content: #ffffff;
+  --color-error: #d0021b; /* Grist's error red */
+  --color-error-content: #ffffff;
+
+  /* Border radius - Grist uses 4px for controls */
+  --radius-selector: 4px; /* 4px */
+  --radius-field: 4px; /* 4px */
+  --radius-box: 4px; /* 4px */
+
+  /* Sizes */
+  --size-selector: 4px;
+  --size-field: 4px;
+
+  /* Border */
+  --border: 1px;
+
+  /* Effects */
+  --depth: 1;
+  --noise: 0;
+}
+
+:is(input, textarea, select, .input, .textarea, .select):focus {
+  @apply outline-none shadow-none border-primary;
+}

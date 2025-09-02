@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: false;
+}
 @plugin "daisyui/theme" {
   name: "grist-light";
   default: true;
@@ -38,23 +40,44 @@
   --color-error: #d0021b; /* Grist's error red */
   --color-error-content: #ffffff;
 
-  /* Border radius - Grist uses 4px for controls */
-  --radius-selector: 4px; /* 4px */
-  --radius-field: 4px; /* 4px */
-  --radius-box: 4px; /* 4px */
+  /* Border radius - Grist uses 3px for inputs */
+  --radius-selector: 3px;
+  --radius-field: 3px; /* Grist's input border-radius */
+  --radius-box: 3px;
 
-  /* Sizes */
-  --size-selector: 4px;
-  --size-field: 4px;
+  /* Sizes - balanced for both inputs and buttons */
+  --size-selector: 3px;
+  --size-field: 3px; /* Compromise between input tightness and button usability */
 
   /* Border */
   --border: 1px;
 
   /* Effects */
-  --depth: 1;
+  --depth: 0;
   --noise: 0;
 }
 
-:is(input, textarea, select, .input, .textarea, .select):focus {
-  @apply outline-none shadow-none border-primary;
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Liberation Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --text-grist: 13px;
+}
+
+@layer base {
+  body {
+    @apply text-grist font-sans;
+  }
+}
+
+@utility input {
+  @apply text-grist focus:outline-none focus:border-primary;
+}
+
+@utility textarea {
+  @apply text-grist focus:outline-none focus:border-primary resize-none;
+}
+
+@utility btn {
+  @apply border-none text-grist font-normal;
 }

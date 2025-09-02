@@ -8,19 +8,19 @@
   </head>
   <body>
     <div class="p-4">
+      <div id="chatContainer" class="mb-4 max-h-96 overflow-y-auto">
+        <!-- Chat bubbles will be populated here -->
+      </div>
       <form id="contentForm" class="space-y-4">
         <div class="form-control">
-          <label class="label" for="contentInput">
-            <span class="label-text">Content</span>
-          </label>
           <textarea
+            class="textarea h-24 w-full"
             id="contentInput"
-            class="textarea textarea-bordered h-32"
             placeholder="Enter your content here..."
           ></textarea>
         </div>
-        <div class="text-right">
-          <button type="submit" class="btn btn-primary">Update Content</button>
+        <div class="flex justify-end w-full">
+          <button type="submit" class="btn btn-primary">Add New</button>
         </div>
       </form>
     </div>

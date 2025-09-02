@@ -5,7 +5,11 @@
       "mcp__Ref__ref_search_documentation",
       "mcp__Ref__ref_read_url",
       "Bash(npm install)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_cAJalr/**)",
+      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_WY9Ehk/**)",
+      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_CX3c7m/**)",
+      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_0hs7Sv/**)"
     ],
     "deny": [],
     "ask": []

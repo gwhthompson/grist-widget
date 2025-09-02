@@ -11,12 +11,12 @@
     "lint:fix": "ts-standard --fix"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^24.3.0",
     "daisyui": "^5.1.3",
     "glob": "^11.0.3",
     "node-ray": "^2.1.2",
     "tailwindcss": "^4.0.0",
-    "@tailwindcss/vite": "^4.0.0",
     "ts-standard": "^12.0.2",
     "vite": "^7.1.4"
   },

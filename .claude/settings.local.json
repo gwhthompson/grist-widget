@@ -9,7 +9,12 @@
       "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_cAJalr/**)",
       "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_WY9Ehk/**)",
       "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_CX3c7m/**)",
-      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_0hs7Sv/**)"
+      "Read(/var/folders/7j/tb_kldx15jv9yk1plzfb21sw0000gn/T/TemporaryItems/NSIRD_screencaptureui_0hs7Sv/**)",
+      "Bash(npm install:*)",
+      "Bash(grep:*)",
+      "Bash(kill:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:support.getgrist.com)"
     ],
     "deny": [],
     "ask": []

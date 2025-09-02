@@ -139,6 +139,9 @@ export interface CursorPos {
   linkingRowIds?: UIRowId[];
 }
 
+
+
+
 export interface FetchSelectedOptions {
   /** Keep encoded cell values instead of decoding them */
   keepEncoded?: boolean;

@@ -1,0 +1,3 @@
+accessLevel: full
+renderAfterReady: true
+description: Allows users to add comments to a record and chat with each other.

@@ -7,13 +7,13 @@ let editor, column, id, lastContent, lastSave
 
 // Create the menu element but don't add it to DOM yet
 const bubbleMenuElement = document.createElement('div')
-bubbleMenuElement.className = 'bubble-menu'
+bubbleMenuElement.className = 'bg-white border border-gray-300 rounded-md shadow-lg p-1 flex gap-0.5 z-[1000]'
 bubbleMenuElement.innerHTML = `
-    <button data-action="toggleBold" title="Bold">B</button>
-    <button data-action="toggleItalic" title="Italic">I</button>
-    <button data-action="toggleUnderline" title="Underline">U</button>
-    <button data-action="toggleBulletList" title="Bullet List">•</button>
-    <button data-action="toggleOrderedList" title="Numbered List">1.</button>
+    <button class="bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100" data-action="toggleBold" title="Bold">B</button>
+    <button class="bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100" data-action="toggleItalic" title="Italic">I</button>
+    <button class="bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100" data-action="toggleUnderline" title="Underline">U</button>
+    <button class="bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100" data-action="toggleBulletList" title="Bullet List">•</button>
+    <button class="bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100" data-action="toggleOrderedList" title="Numbered List">1.</button>
 `
 
 const getMarkName = action => ({
@@ -42,7 +42,12 @@ editor = new Editor({
   onSelectionUpdate: ({ editor }) => {
     // Update button states when selection changes
     bubbleMenuElement.querySelectorAll('button').forEach(button => {
-      button.classList.toggle('is-active', editor.isActive(getMarkName(button.dataset.action)))
+      const isActive = editor.isActive(getMarkName(button.dataset.action))
+      if (isActive) {
+        button.className = 'bg-blue-100 text-blue-800 border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium'
+      } else {
+        button.className = 'bg-transparent border-0 rounded px-2 py-1.5 cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100'
+      }
     })
   }
 })

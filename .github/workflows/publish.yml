@@ -1,0 +1,100 @@
+name: Build image
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      packages: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Restore digest cache
+        if: github.event_name != 'push'
+        uses: actions/cache/restore@v4
+        with:
+          path: .last_digest
+          key: dummy
+          restore-keys: |
+            digest-${{ github.repository }}-
+
+      - name: Check for updated upstream digest
+        id: compare_digest
+        run: |
+          new=$(curl -s 'https://registry.hub.docker.com/v2/namespaces/gristlabs/repositories/grist/tags/stable' | jq -r '.digest')
+          echo "new_digest=$new" >> "$GITHUB_OUTPUT"
+
+          stored=""
+          [ -f .last_digest ] && stored=$(cat .last_digest)
+
+          if [ "$stored" = "$new" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Determine if rebuild needed
+        id: should_rebuild
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ steps.compare_digest.outputs.changed }}" = "true" ]; then
+            echo "rebuild=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "rebuild=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build Vite assets
+        if: steps.should_rebuild.outputs.rebuild == 'true'
+        run: npm run build
+
+      - name: Log in to GitHub Container Registry
+        if: steps.should_rebuild.outputs.rebuild == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up QEMU
+        if: steps.should_rebuild.outputs.rebuild == 'true'
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        if: steps.should_rebuild.outputs.rebuild == 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Docker image
+        if: steps.should_rebuild.outputs.rebuild == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          pull: true
+          push: true
+          tags: ghcr.io/${{ github.repository }}:stable
+          platforms: linux/amd64,linux/arm64
+
+      - name: Save digest cache
+        if: steps.should_rebuild.outputs.rebuild == 'true' && github.event_name != 'push'
+        run: echo "${{ steps.compare_digest.outputs.new_digest }}" > .last_digest
+
+      - name: Update digest cache
+        if: steps.should_rebuild.outputs.rebuild == 'true' && github.event_name != 'push'
+        uses: actions/cache/save@v4
+        with:
+          path: .last_digest
+          key: digest-${{ github.repository }}-${{ github.run_number }}

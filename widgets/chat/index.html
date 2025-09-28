@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Editor</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
   </head>
-  <body>
-    <div class="p-4">
-      <div id="chatContainer" class="mb-4 max-h-96 overflow-y-auto"></div>
+  <body class="flex h-full">
+    <div class="p-4 flex-1 flex flex-col place-content-between">
+      <div
+        id="chatContainer"
+        class="mb-4 overflow-y-auto scroll-smooth scroll-p-4 flex-1 place-content-end"
+      ></div>
       <form id="contentForm" class="space-y-4">
         <div class="form-control">
           <textarea

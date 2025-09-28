@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+html, body {
+  @apply text-gray-900;
+}
+
+.ProseMirror {
+  @apply h-full w-full border-0 outline-none p-4 text-sm leading-6 overflow-y-auto;
+}
+
+.ProseMirror ul {
+  @apply pl-6 list-disc;
+}
+
+.ProseMirror ol {
+  @apply pl-6 list-decimal;
+}
+
+.ProseMirror li {
+  @apply mb-1;
+}

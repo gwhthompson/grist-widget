@@ -30,6 +30,7 @@
     "@tiptap/core": "^3.3.0",
     "@tiptap/extension-bubble-menu": "^3.3.0",
     "@tiptap/extension-underline": "^3.3.0",
-    "@tiptap/starter-kit": "^3.3.0"
+    "@tiptap/starter-kit": "^3.3.0",
+    "js-yaml": "^4.1.0"
   }
 }

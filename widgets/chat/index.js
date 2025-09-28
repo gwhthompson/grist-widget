@@ -1,5 +1,4 @@
-import '../shared/tailwind.css'
-import { getCurrentUser } from '../shared/utils.js'
+import '../../shared/tailwind.css'
 
 const state = {
   currentId: null,
@@ -10,7 +9,7 @@ const state = {
 }
 
 console.log('Calling grist.ready...')
-grist.ready({ 
+grist.ready({
   requiredAccess: 'full',
   allowSelectBy: true
 })
@@ -22,7 +21,7 @@ grist.onRecord(async (record, mappings) => {
 
   // Handle null/undefined record (no selection)
   const newId = record?.id || null
-  
+
   // Log when selection changes
   if (state.previousId !== newId) {
     console.log('🔄 RECORD SELECTION CHANGED:', {
@@ -32,7 +31,7 @@ grist.onRecord(async (record, mappings) => {
     })
     state.previousId = newId
   }
-  
+
   state.currentId = newId
   state.currentUlid = null
   console.log('Set currentId to:', state.currentId, 'record:', record)
@@ -57,7 +56,16 @@ grist.onRecord(async (record, mappings) => {
   const contentInput = document.getElementById('contentInput')
 
   const hasValidRecord = !!(state.currentId && state.currentUlid)
-  console.log('Submit button:', submitButton, 'disabled:', !hasValidRecord, 'currentId:', state.currentId, 'currentUlid:', state.currentUlid)
+  console.log(
+    'Submit button:',
+    submitButton,
+    'disabled:',
+    !hasValidRecord,
+    'currentId:',
+    state.currentId,
+    'currentUlid:',
+    state.currentUlid
+  )
 
   if (submitButton && contentInput) {
     submitButton.disabled = !hasValidRecord
@@ -67,6 +75,20 @@ grist.onRecord(async (record, mappings) => {
   }
 
   await loadComments()
+})
+
+grist.onNewRecord(() => {
+  state.currentId = null
+  state.currentUlid = null
+  renderChatBubbles([])
+  
+  const submitButton = document.querySelector('button[type="submit"]')
+  const contentInput = document.getElementById('contentInput')
+  
+  if (submitButton && contentInput) {
+    submitButton.disabled = true
+    contentInput.placeholder = 'Select a record to add comments...'
+  }
 })
 
 const ensureSetup = async () => {
@@ -161,7 +183,8 @@ const loadComments = async () => {
         content: commentsData.content[i],
         user: commentsData.user[i],
         timestamp: commentsData.timestamp[i],
-        row_ulid: commentsData.row_ulid[i]
+        row_ulid: commentsData.row_ulid[i],
+        own: commentsData.Own?.[i]
       }))
       .filter(({ row_ulid }) => row_ulid === state.currentUlid)
       .sort((a, b) => a.timestamp - b.timestamp)
@@ -179,22 +202,18 @@ const renderChatBubbles = async (comments) => {
   const chatContainer = document.getElementById('chatContainer')
   if (!chatContainer) return
 
-  const { email } = await getCurrentUser()
-
   const createChatBubble = (comment) => {
-    const isCurrentUser = comment.user === email
+    const isOwn = comment.own === true
     const userName = comment.user.split('@')[0]
-    const deleteButton = isCurrentUser
-      ? `<button class="absolute top-2 right-2 w-4 h-4 rounded-full bg-error/80 hover:bg-error text-white flex items-center justify-center text-xs leading-none opacity-0 hover:opacity-100 transition-opacity z-10" onclick="deleteComment(${comment.id})" title="Delete comment">×</button>`
-      : ''
+    const deleteButton = `<button class="absolute top-2 right-2 w-4 h-4 rounded-full bg-error/80 hover:bg-error text-white flex items-center justify-center text-xs leading-none opacity-0 hover:opacity-100 transition-opacity z-10" onclick="deleteComment(${comment.id})" title="Delete comment">×</button>`
 
     return `
-      <div class="chat ${isCurrentUser ? 'chat-end' : 'chat-start'} ${isCurrentUser ? 'relative group' : ''}" 
-           ${isCurrentUser ? `onmouseenter="this.querySelector('button').style.opacity='1'" onmouseleave="this.querySelector('button').style.opacity='0'"` : ''}>
+      <div class="chat ${isOwn ? 'chat-end' : 'chat-start'} relative group" 
+           onmouseenter="this.querySelector('button').style.opacity='1'" onmouseleave="this.querySelector('button').style.opacity='0'">
         <div class="chat-header">
           ${userName} <time class="text-xs opacity-50">${formatTimestamp(comment.timestamp)}</time>
         </div>
-        <div class="chat-bubble">${comment.content}</div>
+        <div class="chat-bubble ${isOwn ? 'chat-bubble-info' : ''}">${comment.content}</div>
         ${deleteButton}
       </div>
     `
@@ -227,11 +246,8 @@ const formatTimestamp = (timestamp) => {
 }
 
 const addComment = async (content) => {
-  const { email } = await getCurrentUser()
-
   await grist.getTable('RowComments').create({
     fields: {
-      user: email,
       timestamp: Date.now() / 1000,
       row_ulid: state.currentUlid,
       content
@@ -240,7 +256,6 @@ const addComment = async (content) => {
 
   await loadComments()
 }
-
 
 console.log('Script loaded, looking for form...')
 const form = document.getElementById('contentForm')
@@ -252,7 +267,7 @@ setTimeout(() => {
   console.log('After timeout - current state:', state)
   const submitButton = document.querySelector('button[type="submit"]')
   const contentInput = document.getElementById('contentInput')
-  
+
   if (submitButton && contentInput) {
     console.log('Initial UI update - button disabled:', !state.currentId)
     submitButton.disabled = !state.currentId
@@ -270,11 +285,27 @@ if (form) {
 
     const input = e.target.querySelector('#contentInput')
     const content = input.value.trim()
-    console.log('Content:', content, 'currentId:', state.currentId, 'currentUlid:', state.currentUlid)
+    console.log(
+      'Content:',
+      content,
+      'currentId:',
+      state.currentId,
+      'currentUlid:',
+      state.currentUlid
+    )
 
     const hasValidRecord = !!(state.currentId && state.currentUlid)
     if (!content || !hasValidRecord) {
-      console.log('Validation failed - content:', content, 'hasValidRecord:', hasValidRecord, 'currentId:', state.currentId, 'currentUlid:', state.currentUlid)
+      console.log(
+        'Validation failed - content:',
+        content,
+        'hasValidRecord:',
+        hasValidRecord,
+        'currentId:',
+        state.currentId,
+        'currentUlid:',
+        state.currentUlid
+      )
       return
     }
 
